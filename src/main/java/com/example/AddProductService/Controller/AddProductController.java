@@ -5,6 +5,7 @@ import com.example.AddProductService.Model.Product;
 import com.example.AddProductService.Service.AddProductService;
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
