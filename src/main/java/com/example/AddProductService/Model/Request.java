@@ -1,6 +1,6 @@
 package com.example.AddProductService.Model;
 
-public class ValidateRequest {
+public class Request {
 
     private String name;
 

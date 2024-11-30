@@ -1,8 +1,8 @@
 package com.example.AddProductService.Service;
 
 import com.example.AddProductService.Model.Product;
-import com.example.AddProductService.Model.ValidateRequest;
-import com.example.AddProductService.Model.ValidateResponse;
+import com.example.AddProductService.Model.Request;
+import com.example.AddProductService.Model.Response;
 import com.example.AddProductService.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,16 +23,16 @@ public class AddProductService {
     }
 
     public Product addProduct(Product product) {
-        ValidateRequest request = new ValidateRequest();
+        Request request = new Request();
         request.setName(product.getName());
 
         String validationUrl = "http://localhost:8832/validate/name";
 
         try {
-            ResponseEntity<ValidateResponse> responseEntity =
-                    restTemplate.postForEntity(validationUrl, request, ValidateResponse.class);
+            ResponseEntity<Response> responseEntity =
+                    restTemplate.postForEntity(validationUrl, request, Response.class);
 
-            ValidateResponse response = responseEntity.getBody();
+            Response response = responseEntity.getBody();
 
             if (response != null) {
                 System.out.println("Validation Response: " + response.getStatus() + " - " + response.getMessage());
@@ -50,7 +50,7 @@ public class AddProductService {
             }
         } catch (RestClientException e) {
 
-            throw new IllegalArgumentException("Failed to validate product: " + e.getMessage(), e);
+            throw new IllegalArgumentException("Failed to validate product 💔💔: " + e.getMessage(), e);
         }
     }
 }

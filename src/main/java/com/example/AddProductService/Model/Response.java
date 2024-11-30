@@ -1,6 +1,6 @@
 package com.example.AddProductService.Model;
 
-public class ValidateResponse {
+public class Response {
 
     private int status;
     private String message;
